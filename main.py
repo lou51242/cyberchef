@@ -135,3 +135,53 @@
 
 # Programme 4
 
+# from Crypto.PublicKey import RSA
+# from Crypto.Cipher import PKCS1_OAEP
+# from Crypto.Random import get_random_bytes
+# import base64
+# import os
+
+
+# class RsaGestion:
+#     def __init__(self):
+#         print("Construction de la classe")
+
+#         self.clefPrive = None
+#         self.clefPublic = None
+#     def __del__(self):
+#         print("Destructeur par défaut du RSA")
+#     def chargement_clefs(self, fichier_public, fichier_prive):
+#             self.chargement_clef_privee(fichier_prive)
+#             self.chargement_clef_publique(fichier_public)
+    
+#     def chargement_clef_privee(self, fichier_prive):
+#             with open(fichier_prive, 'rb') as f:
+#                 self.clefPrive = RSA.import_key(f.read())
+    
+#     def chargement_clef_publique(self, fichier_public):
+#             with open(fichier_public, 'rb') as f:
+#                 self.clefPublic = RSA.import_key(f.read())
+#     def chiffrement_fichier(self, fichier_entree, fichier_sortie, format64=False):
+#             if format64:
+#                 with open(fichier_entree, 'r', encoding='utf-8') as f:
+#                     texte = f.read()
+#                 self.chiffre_dans_fichier(texte, fichier_sortie)
+#             else:
+#                 cipher = PKCS1_OAEP.new(self.clefPublic)
+#                 with open(fichier_entree, 'rb') as f_in:
+#                     data = f_in.read()
+#                     encrypted = cipher.encrypt(data)
+#                 with open(fichier_sortie, 'wb') as f_out:
+#                     f_out.write(encrypted)
+#     def dechiffrement_fichier(self, fichier_entree, fichier_sortie, format64=False): 
+#             if format64:
+#                 texte = self.dechiffre_fichier(fichier_entree)
+#                 with open(fichier_sortie, 'w', encoding='utf-8') as f:
+#                     f.write(texte)
+#             else:
+#                 cipher = PKCS1_OAEP.new(self.clefPrive)
+#                 with open(fichier_entree, 'rb') as f_in:
+#                     encrypted = f_in.read()
+#                     decrypted = cipher.decrypt(encrypted)
+#                 with open(fichier_sortie, 'wb') as f_out:
+#                     f_out.write(decrypted)
