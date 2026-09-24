@@ -44,3 +44,38 @@
 
 # Programme 2
 
+from Crypto.PublicKey import RSA
+from Crypto.Cipher import PKCS1_OAEP
+from Crypto.Random import get_random_bytes
+import base64
+import os
+
+
+class RsaGestion:
+    def __init__(self):
+        print("Construction de la classe")
+
+        self.clefPrive = None
+        self.clefPublic = None
+    def __del__(self):
+        print("Destructeur par défaut du RSA")
+    def chargement_clefs(self, fichier_public, fichier_prive):
+            self.chargement_clef_privee(fichier_prive)
+            self.chargement_clef_publique(fichier_public)
+    def chiffre_dans_fichier(self, donnee, nom_fichier):
+            donne_chiffree = self.chiffrement_rsa(donnee)
+            with open(nom_fichier, 'w', encoding='utf-8') as f:
+                f.write(donne_chiffree)
+            print("Fichier enregistré avec succès.")
+    
+    def dechiffre_fichier(self, nom_fichier):
+            try:
+                with open(nom_fichier, 'r', encoding='utf-8') as f:
+                    message_chiffre = f.read()
+                return self.dechiffrement_rsa(message_chiffre)
+            except Exception as e:
+                print("Erreur :", e)
+                return ""
+
+# Programme 3
+
