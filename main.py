@@ -62,6 +62,13 @@
 #     def chargement_clefs(self, fichier_public, fichier_prive):
 #             self.chargement_clef_privee(fichier_prive)
 #             self.chargement_clef_publique(fichier_public)
+#     def chargement_clef_privee(self, fichier_prive):
+#             with open(fichier_prive, 'rb') as f:
+#             self.clefPrive = RSA.import_key(f.read())
+    
+#     def chargement_clef_publique(self, fichier_public):
+#             with open(fichier_public, 'rb') as f:
+#                 self.clefPublic = RSA.import_key(f.read())
 #     def chiffrement_rsa(self, donne_claire):
 #             cipher = PKCS1_OAEP.new(self.clefPublic)
 #             donne_claire_bytes = donne_claire.encode('utf-8')
@@ -82,38 +89,49 @@
 
 # Programme 3
 
-from Crypto.PublicKey import RSA
-from Crypto.Cipher import PKCS1_OAEP
-from Crypto.Random import get_random_bytes
-import base64
-import os
+# from Crypto.PublicKey import RSA
+# from Crypto.Cipher import PKCS1_OAEP
+# from Crypto.Random import get_random_bytes
+# import base64
+# import os
 
-class RsaGestion:
-    def __init__(self):
-        print("Construction de la classe")
+# class RsaGestion:
+#     def __init__(self):
+#         print("Construction de la classe")
 
-        self.clefPrive = None
-        self.clefPublic = None
-    def __del__(self):
-        print("Destructeur par défaut du RSA")
-    def chargement_clefs(self, fichier_public, fichier_prive):
-            self.chargement_clef_privee(fichier_prive)
-            self.chargement_clef_publique(fichier_public)
+#         self.clefPrive = None
+#         self.clefPublic = None
+#     def __del__(self):
+#         print("Destructeur par défaut du RSA")
+#     def chargement_clefs(self, fichier_public, fichier_prive):
+#             self.chargement_clef_privee(fichier_prive)
+#             self.chargement_clef_publique(fichier_public)
     
-    def chargement_clef_privee(self, fichier_prive):
-            with open(fichier_prive, 'rb') as f:
-                self.clefPrive = RSA.import_key(f.read())
+#     def chargement_clef_privee(self, fichier_prive):
+#             with open(fichier_prive, 'rb') as f:
+#                 self.clefPrive = RSA.import_key(f.read())
     
-    def chargement_clef_publique(self, fichier_public):
-            with open(fichier_public, 'rb') as f:
-                self.clefPublic = RSA.import_key(f.read())
-    def chiffrement_rsa(self, donne_claire):
-            cipher = PKCS1_OAEP.new(self.clefPublic)
-            donne_claire_bytes = donne_claire.encode('utf-8')
-            donne_chiffree = cipher.encrypt(donne_claire_bytes)
-            return base64.b64encode(donne_chiffree).decode('utf-8')
-    def chiffre_dans_fichier(self, donnee, nom_fichier):
-            donne_chiffree = self.chiffrement_rsa(donnee)
-            with open(nom_fichier, 'w', encoding='utf-8') as f:
-                f.write(donne_chiffree)
-            print("Fichier enregistré avec succès.")
+#     def chargement_clef_publique(self, fichier_public):
+#             with open(fichier_public, 'rb') as f:
+#                 self.clefPublic = RSA.import_key(f.read())
+#     def chiffrement_rsa(self, donne_claire):
+#             cipher = PKCS1_OAEP.new(self.clefPublic)
+#             donne_claire_bytes = donne_claire.encode('utf-8')
+#             donne_chiffree = cipher.encrypt(donne_claire_bytes)
+#             return base64.b64encode(donne_chiffree).decode('utf-8')
+#     def chiffre_dans_fichier(self, donnee, nom_fichier):
+#             donne_chiffree = self.chiffrement_rsa(donnee)
+#             with open(nom_fichier, 'w', encoding='utf-8') as f:
+#                 f.write(donne_chiffree)
+#             print("Fichier enregistré avec succès.")
+#     def dechiffre_fichier(self, nom_fichier):
+#             try:
+#                 with open(nom_fichier, 'r', encoding='utf-8') as f:
+#                     message_chiffre = f.read()
+#                 return self.dechiffrement_rsa(message_chiffre)
+#             except Exception as e:
+#                 print("Erreur :", e)
+#                 return ""
+
+# Programme 4
+
